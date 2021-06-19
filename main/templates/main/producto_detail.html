@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> LinioExp </title>
+    
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="jquery-1.3.2.min.js" type="text/javascript"></script>   
+    <h1> Linio Exp </h1>
+    <hr>
+    <h3> {{ object.nombre }} </h3>
+    <div class="columns">
+      {% for image in object.images.all %}
+      <div class="column is-3">
+          <figure class="image is-square">
+              <a href="{{ image.image.url }}">
+                  <img src="{{ image.image.url }}" alt="No hay imagen disponible">
+              </a>
+          </figure>
+      </div>
+      {% empty %}
+      <div class="column content">
+          <p>Aún no hay imágenes disponibles</p>
+      </div>
+      {% endfor %}
+  </div>
+    <ul>
+      <li><strong>Precio:</strong> {{ object.precio }}</li>
+      <li><strong>Descripcion:</strong> {{ object.descripcion }}</li>
+      <li><strong>Categoria:</strong> {{ object.categoria.nombre }}</li>
+      <li><strong>Proveedor:</strong> {{ object.proveedor }}</li>
+    </ul>
+    <hr>
+    <ul>
+      <li><a href="{% url 'product-list' %}">Ver Lista de Productos</a></li>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+    </ul>
+
+    <div id="carrito" class="block">
+      <a href="{% url 'add-to-cart' product_pk=object.pk %}" class='button is-primary'>
+        Añadir al carrito
+      </a>
+
+    </div>
+    <div id="pedido" class="block" style="display: block;">  
+      <a href="{% url 'pedido-detail' %}" class='button'>
+        Ver carrito
+      </a>
+    <div >    
+    </div>
+    <script>
+
+      $(document).ready(function(){
+        $("#carrito").click(function(){    
+          alert("Tu producto ha sido añadido al carrito exitosamente");
+          if($("#carrito").attr(style="display: none;")){
+            $("#pedido").css("display", "block");
+          }else{
+            $("#pedido").css("display", "none");
+          }
+        });
+      });
+    
+    </script>
+    
+
+  </body>
+</html>
+
