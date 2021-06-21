@@ -7,15 +7,35 @@ class Proveedor(models.Model):
     ruc = models.CharField(max_length=11)
     razon_social = models.CharField(max_length=20)
     telefono = models.CharField(max_length=9)
+    
+    def _init_(self,razon_social):
+      self.razon_social=razon_social
+    
+    def __str__(self):
+      cadena=self.razon_social
+      return cadena
 
 class Categoria(models.Model):
     codigo = models.CharField(max_length=4)
     nombre = models.CharField(max_length=50)
 
+    def _init_(self,nombre):
+      self.nombre=nombre
+    
+    def __str__(self):
+      cadena=self.nombre
+      return cadena   
+
 class Localizacion(models.Model):
   distrito = models.CharField(max_length=20)
   provincia = models.CharField(max_length=20)
   departamento = models.CharField(max_length=20)
+
+  def _init_(self,distrito):
+      self.distrito=distrito
+  def __str__(self):
+      cadena=self.distrito
+      return cadena
 
 class Producto(models.Model):
     # Relaciones
@@ -28,7 +48,7 @@ class Producto(models.Model):
     precio = models.FloatField()
     estado = models.CharField(max_length=3)
     descuento = models.FloatField(default=0)
-    
+
     def get_precio_final(self):
         return self.precio * (1 - self.descuento)
 
@@ -37,6 +57,13 @@ class Producto(models.Model):
         codigo_producto = str(self.id).zfill(6)
 
         return f'{codigo_categoria}-{codigo_producto}'
+    
+    def _init_(self,nombre):
+      self.nombre=nombre
+    
+    def __str__(self):
+      cadena=self.nombre
+      return cadena
 
 class Profile(models.Model):
     # Relacion con el modelo User de Django
@@ -80,6 +107,13 @@ class Colaborador(models.Model):
 
     def __str__(self):
         return f'Colaborador: {self.user_profile.user.get_username()}'
+    
+    def _init_(self,user_profile):
+      self.user_profile=user_profile
+    
+    def __str__(self):
+      cadena=self.user_profile
+      return cadena
 
 class Pedido(models.Model):
     # Relaciones

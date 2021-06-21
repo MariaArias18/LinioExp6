@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <title>Icono en el navegador</title>
+    <link rel="icon" type="https://cdn.sstatic.net/Sites/es/img/apple-touch-icon.png?v=7739871010e6">
+</head>
+
+<head>
     <!-- Usaremos utf-8 como formato de codificación -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Título de nuestra página -->
@@ -9,15 +15,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
-<div class="content">
-  <form action="{% url 'product-list' %}" method="get">
-      <input class="input is-rounded" type="text" name="q" placeholder="Busca tu producto...">
-  </form>
-</div>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="https://previews.dropbox.com/p/thumb/ABMn85Dtar9BR2kttVC6I8V4mCptcvKkG_Zj7v7ukRfSIsZuHSft-Oz6ytDy7FLQ6872YK1HfGLH5UJ8M-LgeELMfIps2-CXy1fx2hUpssOmWO6Fxl60n_hG5FdZc2pDBl4OxXL7JHk578wl-FxXi4QuJzmKXH50BlHt2bItu6G4n8Kgz_fU7EKejGFjohA98aGOqSx_VsiFzg2Hh1ICRjia8aTMpc4bovHKFhUEtsxusthZgUbwcoJMmZuNr6JPd3H_0_aE-c54sIde63gOKE4-3Q_smmuK3fWtcL40ePv1TrlRAtcVK9ztjqhsY9kTOZkKDraDgkJa9-nO1m5M9gUgL24u4i80N8bCFbntMYWAEg/p.png?fv_content=true&size_mode=5" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Mi cuenta
+        </a>
+        <div class="navbar-dropdown">
+          <a href=" /accounts/login/ " class="dropdown-item">
+            Datos personales
+          </a> 
+          <hr class="dropdown-divider">
+          <a href=" /accounts/login/ " class="dropdown-item">
+            Productos asociados
+          </a>
+        </div>
+      </div>
+         
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Categorias
+        </a>
+        <div class="navbar-dropdown">
+          <a href="/categorias/1" class="dropdown-item">
+            Consolas y Videojuegos
+          </a> 
+          <hr class="dropdown-divider">
+          <a href="/categorias/2" class="dropdown-item">
+            Celulares y Tablets
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/3" class="dropdown-item">
+            TV, Audio y Foto
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/4" class="dropdown-item">
+            Computacion
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/5" class="dropdown-item">
+            Hogar
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/6" class="dropdown-item">
+            Electrohogar
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/7" class="dropdown-item">
+            Moda
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/8" class="dropdown-item">
+            Relojes y Accesorios
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/9" class="dropdown-item">
+            Belleza y Cuidado Personal
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/10" class="dropdown-item">
+            Salud y Bienestar
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/11" class="dropdown-item">
+            Juguetes, Niños y Bebes
+          </a>
+          <hr class="dropdown-divider">
+          <a href="/categorias/12" class="dropdown-item">
+            Deportes
+          </a>
+        </div>
+      </div>
+
+      <a class="navbar-item" href=" /accounts/login/ ">
+        Carrito de compras
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Pedidos
+        </a>
+        <div class="navbar-dropdown">
+          <a href=" /accounts/login/ " class="dropdown-item">
+            Pedidos en proceso
+          </a> 
+          <hr class="dropdown-divider">
+          <a href=" /accounts/login/ " class="dropdown-item">
+            Pedidos terminados
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <form action="/productos" method="get">
+            <input class="input is-rounded" type="text" name="q" placeholder="Busca tu producto...">
+        </form>
+      </div>
+
+      
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" href="/registro/">
+            <strong>Registrate</strong>
+          </a>
+          <a class="button is-light" href="/accounts/login/">
+            Inicia Sesion
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+
 <body>
+  <style type="text/css">
+    h1 {
+      color:rgb(255, 123, 0);
+      text-align: center;
+      font-family:Segoe UI;
+      font-size: 350%;
+      }
+  </style>
+
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+
+
     <section class="section">
       <div class="container">
-        <h1 class="title is-1"> Linio Express </h1>
+        <h1 class="title is-1">
+          <MARQUEE> Linio Express </MARQUEE></h1>
         <hr>
         {% block content %}
         {% endblock %}

@@ -2,12 +2,50 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+
+<style type="text/css">
+h1 {
+  color:rgb(255, 123, 0);
+  text-align: center;
+  font-family:Segoe UI;
+  font-size: 350%;
+  }
+
+h3{
+  color:rgb(0, 0, 0);
+  font-family:Segoe UI;
+  font-size: 150%;
+  }
+
+a{
+  color:rgb(0, 0, 0);
+  font-family:Segoe UI;
+  font-size: 125%;
+  }
+</style>
+
 <h3> Hola {{ user.get_username }} </h3>
 <p>
     <a href="{% url 'logout' %}">Cierra Sesion</a>
+    <style>
+      b{
+        color:rgb(235, 15, 15);
+        font-family:Segoe UI;
+        font-size: 125%;
+        height: 150px;
+        left: 700px;
+        position: relative;
+        top: -250px;
+        width: 100px;
+        }
+      </style>
+    
 </p>
 {% else %}
+
 <h3> Hola </h3>
+
+
 <p>
     <a href="{% url 'login' %}">Inicia Sesion</a> o
     <a href="{% url 'register' %}">Registrate</a>
@@ -43,3 +81,4 @@
   <li><a href="{% url 'product-list' %}">Ver Lista de Productos Completa</a></li>
 </ul>
 {% endblock %}
+

@@ -1,10 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="jquery-1.3.2.min.js" type="text/javascript"></script>   
     <script src="https://www.paypal.com/sdk/js?client-id=AV-1RL9Gv-4t1Z-oqBlEa-kDd8NrBB0v7qDnDc85D7o-oDK45cIuUMSlK2AMXNvy2N_XWMxv3Wo4nXU1"> // Replace YOUR_SB_CLIENT_ID with your sandbox client ID
     </script>
+    
+    <h3 class="title">Seleccionar comprobante de pago:</h3>
+ 
+    <li><a id="boleta">Boleta</a></li>
+    <form hidden id="form_a" action="ejemplo.php" method="get">
+      <p>Nombre: <input type="text" name="nombre"></p>
+      <p>DNI: 
+        <input type="number" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" /><i>(Máximo 8 dígitos)</i>
+      </p>
+      <p>Direccion: <input type="text" name="nombre"></p>
+      <p>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+      </p>    
+    </form>
 
-    <h3 class="title">Precio total del pedido: {{ pedido.get_total }}</h3>
+    
+    <script>
+      $(document).ready(function(){
+        $("#boleta").click(function(){   
+          $("#form_a").show();
+
+        });
+      });
+    
+    </script>
+    
+    <li><a id="factura">Factura</a></li>
+    <form hidden id="form_b" action="ejemplo.php" method="get">
+      <p>RUC: 
+        <input type="number" maxlength="12" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" /><i>(Máximo 12 dígitos)</i>
+      </p>
+      <p>Razon social: <input type="text" name="razon_social"></p>
+      <p>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+      </p>
+    </form>
+    
+    <script>
+      $(document).ready(function(){
+        $("#factura").click(function(){   
+          $("#form_b").show();
+
+        });
+      });
+    
+    </script>
+
+    <h3 class="title">Precio total del pedido: {{ pedido.get_total }}</h4>
 
     <div class="block" id="paypal-button-container"></div>
 
