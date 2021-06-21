@@ -11,9 +11,10 @@
         <form method="post">
           {% csrf_token %}
           {{ form.as_p }}
-          <input type="submit" value="Confirmar Carrito" class="button is-info">
+          <input id="confirmar" type="submit" value="Confirmar Carrito" class="button is-info">
           <a id="inicio" type="submit" href="{% url 'home' %}" class="button is-info">Inicio</a>
-
+          
+          
           <script>
             $(document).ready(function(){
               $("#inicio").click(function(){    

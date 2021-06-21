@@ -16,7 +16,7 @@
       </p>
       <p>Direccion: <input type="text" name="nombre"></p>
       <p>
-        <input type="submit" value="Enviar">
+        <a type="buttom" href="{% url 'complete-payment' %}">Enviar</a>
         <input type="reset" value="Borrar">
       </p>    
     </form>
@@ -35,26 +35,40 @@
     <li><a id="factura">Factura</a></li>
     <form hidden id="form_b" action="ejemplo.php" method="get">
       <p>RUC: 
-        <input type="number" maxlength="12" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" /><i>(Máximo 12 dígitos)</i>
+        <input id="ruc" type="number" maxlength="12" 
+        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+        <i>(Máximo 12 dígitos)</i>
       </p>
       <p>Razon social: <input type="text" name="razon_social"></p>
       <p>
-        <input type="submit" value="Enviar">
-        <input type="reset" value="Borrar">
+        <a id="enviar21" type="submit" href="{% url 'complete-payment' %}">Enviar</a>
+        <input id="borrar2" type="reset" value="Borrar">
       </p>
     </form>
-    
+
+
     <script>
       $(document).ready(function(){
         $("#factura").click(function(){   
           $("#form_b").show();
+        });
+      });
 
+      $(document).ready(function(){
+        $("#enviar21").click(function(){    
+          if(4 > 12){
+            $("#borrar2").trigger('click');
+            alert("Verifica que ingresaste correctamente datos");
+          }else{
+            $("#enviar21").trigger('click');
+            alert("Ingreso exitoso");
+          }
         });
       });
     
     </script>
 
-    <h3 class="title">Precio total del pedido: {{ pedido.get_total }}</h4>
+    <h4 class="title">Precio total del pedido: {{ pedido.get_total }}</h4>
 
     <div class="block" id="paypal-button-container"></div>
 
